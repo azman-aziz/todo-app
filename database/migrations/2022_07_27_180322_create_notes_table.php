@@ -15,6 +15,13 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('content',6555);
+            $table->foreignId('category_id')->nullable();
+            $table->foreignId('menus_id')->nullable();
+            $table->date('set_deadline')->nullable();
+            $table->string('priority')->nullable();
+            $table->string('star')->nullable();
             $table->timestamps();
         });
     }

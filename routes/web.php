@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\NotesController;
+
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
+
+Route::resource('/dashboard', NotesController::class);
+Route::resource('/menu', MenuController::class);
+Route::resource('/category', CategoryController::class);
+
+Route::get('/{relasi}', [NotesController::class, 'custom']);
+Route::put('/star/{id}', [NotesController::class, 'star']);
+Route::put('/un_star/{id}', [NotesController::class, 'un_star']);
